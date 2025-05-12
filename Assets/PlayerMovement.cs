@@ -38,7 +38,8 @@ public class PlayerMovement : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        if (rb == null)
+            rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -85,7 +86,7 @@ public class PlayerMovement : MonoBehaviour
             rb.linearVelocity = new Vector2(wallJumpDirection * wallJumpPower.x, wallJumpPower.y);
             wallJumpTimer = 0;
 
-            if(transform.localScale.x != wallJumpDirection)
+            if (transform.localScale.x != wallJumpDirection)
             {
                 isFacingRight = !isFacingRight;
                 Vector3 ls = transform.localScale;
@@ -99,17 +100,17 @@ public class PlayerMovement : MonoBehaviour
 
     private void CheckWallSlide()
     {
-            if (!isGrounded() & isWall() & movementInput != 0)
-            {
-                isWallSliding = true;
-                rb.gravityScale = 0;
-                rb.linearVelocity = new Vector2(0, 0);
-            }
-            else
-            {
-                rb.gravityScale = baseGravity;
-                isWallSliding = false;
-            }
+        if (!isGrounded() & isWall() & movementInput != 0)
+        {
+            isWallSliding = true;
+            rb.gravityScale = 0;
+            rb.linearVelocity = new Vector2(0, 0);
+        }
+        else
+        {
+            rb.gravityScale = baseGravity;
+            isWallSliding = false;
+        }
     }
 
     private void CheckWallJump()
@@ -135,7 +136,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Flip()
     {
-        if(isFacingRight && horizontalMovement < 0 || !isFacingRight && horizontalMovement > 0)
+        if (isFacingRight && horizontalMovement < 0 || !isFacingRight && horizontalMovement > 0)
         {
             isFacingRight = !isFacingRight;
             Vector3 ls = transform.localScale;
@@ -147,7 +148,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isWall()
     {
         if (Physics2D.OverlapBox(wallCheckPos.position, wallCheckSize, 0, groundLayer))
-        {            
+        {
             return true;
         }
         return false;

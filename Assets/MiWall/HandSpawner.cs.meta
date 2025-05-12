@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: b60d59a179fdb7742a90993a8ece1c6a
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - vertHandPrefab: {fileID: 990733439364483502, guid: feec0548258f26241a46eae639572668, type: 3}
+  - horizHandPrefab: {fileID: 7190012884960421900, guid: a5a94cbd8b3c8d3479590df3cb7f09ed, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
